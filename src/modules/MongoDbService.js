@@ -7,8 +7,8 @@ configLoader.loadConfigs(require('../../config/mongodb'))
 const configs = configLoader.getConfigs()
 
 mongoose.Promise = global.Promise
-mongoose.connect('mongodb://localhost/' + configs.applicationName
-  , { useMongoClient: true })
+mongoose.connect('mongodb://localhost/' + configs.applicationName,
+  { useMongoClient: true })
 
 const Schema = mongoose.Schema
 
