@@ -1,0 +1,22 @@
+{
+  "mongoDbObjectTemplate": {
+    "name": "String",
+    "category": "String",
+    "date": "Date"
+  },
+  "loadSampleRecords": true,
+  "sampleRecords": [
+    {
+      "name": "name1",
+      "category": "category1"
+    },
+    {
+      "name": "name2",
+      "category": "category2"
+    },
+    {
+      "name": "name3",
+      "category": "category3"
+    }
+  ]
+}

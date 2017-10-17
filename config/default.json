@@ -1,0 +1,11 @@
+{
+  "applicationName": "expressRestfulApi",
+  "apiVersion": "1.0",
+  "httpHeaders": {
+    "contentType": {
+      "header": "Content-Type",
+      "json": "application/json",
+      "html": "text/html; charset=utf-8"
+    }
+  }
+}

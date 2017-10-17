@@ -1,0 +1,6 @@
+{
+  "logging": {
+    "logToConsole": true,
+    "logToFile": true
+  }
+}

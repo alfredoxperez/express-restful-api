@@ -1,0 +1,4 @@
+# Ignore everything in this directoryoperez$ cat .gitignore
+*
+# Except this file
+!.gitignore
