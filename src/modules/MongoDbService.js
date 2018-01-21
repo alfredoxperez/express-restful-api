@@ -1,21 +1,24 @@
-'use strict';
 // @flow
+'use strict'
+
 const mongoose = require('mongoose')
 const log = require('../util/Logger')
 const configLoader = require('../util/ConfigLoader')
+
+/**
+ * MongoDbService.js
+ * 
+ */
 configLoader.loadConfigs(require('../../config/mongodb'))
 const configs = configLoader.getConfigs()
-
 mongoose.Promise = global.Promise
-mongoose.connect('mongodb://localhost/' + configs.applicationName,
-  { useMongoClient: true })
-
+const applicationName = (configs.applicationName).replace(/-/g,"")
+mongoose.connect('mongodb://localhost/' + applicationName, { useMongoClient: true })
 const Schema = mongoose.Schema
-
 const mongoDbSchema = new Schema(configs.mongoDbObjectTemplate)
+const mongodbResponseTemplate = configs.mongodbResponseTemplate
 const mongoDbObjectModel = mongoose.model(
-  configs.applicationName + 'MongoDbModelName', 
-  mongoDbSchema)
+  applicationName + 'MongoDbModelName', mongoDbSchema)
 
 function loadRecordsFromConfig () {
   mongoDbObjectModel.collection.drop()
@@ -23,7 +26,7 @@ function loadRecordsFromConfig () {
   records.forEach(function (record) {
     addRecord(record.name, record.category)
   })
-};
+}
 
 /**
  * addRecord()
@@ -34,17 +37,30 @@ function loadRecordsFromConfig () {
  */
 const addRecord = function (name: string, category: string) {
   const instance = new mongoDbObjectModel()
-
   instance.name = name
   instance.category = category
 
-  instance.save(function (err) {
-    if (err != null) { 
-      log.err('MongoDBService error: ', err) 
-      //TODO: throw error
+  let response = JSON.parse(JSON.stringify(mongodbResponseTemplate))
+  return instance.save().then(savedRecord => {
+    log.info('MongoDbService: successfully added record: ', savedRecord)
+    return response
+  }).catch(err => {
+    if(err.code = 11000){
+      log.info('MongoDbService: addRecord: found duplicate for: ', instance)
     }
+    log.err('MongoDbService: error: ', err)
+    return response
   })
 }
+
+
+/**
+ * getRecords()
+ */
+const getRecords: Function = function() {
+  return mongoDbObjectModel.find({}).then(function(docs) {return docs})
+}
+
 
 /**
  * getRandom()
@@ -65,5 +81,6 @@ const getRandom = function () {
 log.info('MongoDbService: Initialized')
 module.exports = {
   addRecord: addRecord,
-  getRandom: getRandom
+  getRandom: getRandom,
+  getRecords: getRecords
 }

@@ -5,6 +5,10 @@
     "date": "Date"
   },
   "loadSampleRecords": true,
+  "mongodbResponseTemplate": {
+    "success": false,
+    "duplicate": false
+  },
   "sampleRecords": [
     {
       "name": "name1",
