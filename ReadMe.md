@@ -1,5 +1,5 @@
 # express RESTful API
-'expressRestfulApi' is a RESTful web app using express js. This is meant as a template for web server apps. 
+'express-restful-api' is a RESTful web app using express js. This is meant as a template for web server apps. 
 
 Features include:
  - MongoDb connection class
@@ -10,7 +10,7 @@ Features include:
 
 ---
 # Lastest Environment Versions Used:
-- npm: 5.4.2
+- npm: 5.5.1
 - node: v8.7.0
 
 ---
