@@ -38,7 +38,6 @@ function log (level, msg, obj, request) {
     request = ''
   } else {
     request = JSON.parse(JSON.stringify(request))
-    delete request.apiConnector
     request = {
       foreignApiRequest: request
     }
