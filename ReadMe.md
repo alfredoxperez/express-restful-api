@@ -66,19 +66,19 @@ Note records may get lost when processing large files through the CLI.
 
 Example Usage:
 ```
-tail -f ./logs/expressRestfulApi.log | ./node_modules/.bin/bunyan
+tail -f ./logs/express-restful-api.log | ./node_modules/.bin/bunyan
 ```
 
 ---
 # API Manual Examples
 GET data:
 ```
-curl -v  'http://localhost:3000/expressrestfulapi/api/1.0/'
+curl -v  'http://localhost:3000/express-restful-api/api/1.0/'
 ```
 
 POST data:
 ```
-curl -v -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{"name":"myJsonNam, "category":"myJsonCategory"}' 'http://localhost:3000/expressrestfulapi/api/1.0/'
+curl -v -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{"name":"myJsonNam, "category":"myJsonCategory"}' 'http://localhost:3000/express-restful-api/api/1.0/'
 ```
 
 

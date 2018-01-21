@@ -1,5 +1,5 @@
 {
-  "applicationName": "expressRestfulApi",
+  "applicationName": "express-restful-api",
   "apiVersion": "1.0",
   "httpHeaders": {
     "contentType": {
