@@ -10,8 +10,8 @@ Features include:
 
 ---
 # Lastest Environment Versions Used:
-- npm: 5.5.1
-- node: v8.7.0
+- npm: 5.6.0
+- node: v9.4.0
 
 ---
 # Setup 
